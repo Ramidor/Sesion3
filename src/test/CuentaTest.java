@@ -12,7 +12,7 @@ import pkg.Cuenta;
 
 class CuentaTest {
 	
-	Cuenta cuenta;
+	Cuenta cuenta, cuenta1, cuenta2;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -26,6 +26,8 @@ class CuentaTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		cuenta = new Cuenta(0d);
+		cuenta1 = new Cuenta(0d, 12345, "Pepe");
+		cuenta2 = new Cuenta(0d, 67890, "Luis");
 	}
 
 	@AfterEach
@@ -42,6 +44,32 @@ class CuentaTest {
 	void testRetirar() {
 		cuenta.retirar(1d);
 		assertEquals(-1, cuenta.getSaldo());
+	}
+	
+	@Test
+	void test0014() {
+		//se van a crear dos var boolean para comprobar los saldos finales, y se va usar el asserboolean
+		cuenta1.retirar(200d);
+		cuenta2.retirar(350d);
+		cuenta1.ingresar(100d);
+		cuenta2.retirar(200d);
+		cuenta2.retirar(150d);
+		cuenta1.ingresar(200d);
+		cuenta2.ingresar(50d);
+		cuenta2.retirar(200d);
+		
+		Double saldoFinal1 = -250d;
+		Double saldoFinal2 = -450d;
+		Boolean correcto = false;
+		
+		System.out.println("Cuenta " + cuenta1.getNumero() + " tiene de saldo final: " + cuenta1.getSaldo());
+		System.out.println("Cuenta " + cuenta2.getNumero() + " tiene de saldo final: " + cuenta2.getSaldo());
+		
+		if(cuenta1.getSaldo()== saldoFinal1 && cuenta2.getSaldo()==saldoFinal2) {
+			correcto = true;
+		}
+		
+		assertTrue(correcto);
 	}
 
 }
