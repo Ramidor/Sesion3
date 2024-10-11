@@ -19,6 +19,11 @@ public class Cuenta {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
+
+	public void retirar(Double d) {
+		this.saldo -= d;
+		
+	}
 	
 	
 
