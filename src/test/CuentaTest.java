@@ -36,5 +36,11 @@ class CuentaTest {
 		cuenta.ingresar(1d);
 		assertEquals(1, cuenta.getSaldo());
 	}
+	
+	@Test
+	void testRetirar() {
+		cuenta.retirar(1d);
+		assertEquals(-1, cuenta.getSaldo());
+	}
 
 }
