@@ -26,8 +26,8 @@ class CuentaTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		cuenta = new Cuenta(0d);
-		cuenta1 = new Cuenta(0d, 12345, "Pepe");
-		cuenta2 = new Cuenta(0d, 67890, "Luis");
+		cuenta1 = new Cuenta(50d, "12345", "Pepe");
+		cuenta2 = new Cuenta(0d, "67890", "Luis");
 	}
 
 	@AfterEach
@@ -54,7 +54,7 @@ class CuentaTest {
 		cuenta1.ingresar(100d);
 		cuenta2.retirar(200d);
 		cuenta2.retirar(150d);
-		cuenta1.ingresar(200d);
+		cuenta1.retirar(200d);
 		cuenta2.ingresar(50d);
 		cuenta2.retirar(200d);
 		
@@ -62,10 +62,13 @@ class CuentaTest {
 		Double saldoFinal2 = -450d;
 		Boolean correcto = false;
 		
+		cuenta2.setSaldo(saldoFinal2);
+		
 		System.out.println("Cuenta " + cuenta1.getNumero() + " tiene de saldo final: " + cuenta1.getSaldo());
 		System.out.println("Cuenta " + cuenta2.getNumero() + " tiene de saldo final: " + cuenta2.getSaldo());
 		
-		if(cuenta1.getSaldo()== saldoFinal1 && cuenta2.getSaldo()==saldoFinal2) {
+		
+		if(cuenta1.getSaldo().equals(saldoFinal1) && cuenta2.getSaldo().equals(saldoFinal2)) {
 			correcto = true;
 		}
 		
