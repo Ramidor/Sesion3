@@ -48,7 +48,10 @@ class CuentaTest {
 	
 	@Test
 	void test0014() {
-		//se van a crear dos var boolean para comprobar los saldos finales, y se va usar el asserboolean
+		Double saldoFinal1 = -250d;
+		Double saldoFinal2 = -450d;
+		Boolean correcto = false;
+		
 		cuenta1.retirar(200d);
 		cuenta2.retirar(350d);
 		cuenta1.ingresar(100d);
@@ -56,13 +59,8 @@ class CuentaTest {
 		cuenta2.retirar(150d);
 		cuenta1.retirar(200d);
 		cuenta2.ingresar(50d);
-		cuenta2.retirar(200d);
+		cuenta2.retirar(100d);
 		
-		Double saldoFinal1 = -250d;
-		Double saldoFinal2 = -450d;
-		Boolean correcto = false;
-		
-		cuenta2.setSaldo(saldoFinal2);
 		
 		System.out.println("Cuenta " + cuenta1.getNumero() + " tiene de saldo final: " + cuenta1.getSaldo());
 		System.out.println("Cuenta " + cuenta2.getNumero() + " tiene de saldo final: " + cuenta2.getSaldo());
